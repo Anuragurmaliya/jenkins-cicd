@@ -1,11 +1,34 @@
-provider "aws" {
-  region = "ap-south-1"
-}
+pipeline {
+    agent any
 
-resource "aws_instance" "dev" {
-    ami = "ami-0cc9838aa7ab1dce7"
-    instance_type = "t2.nano"
-    tags = {
-      Name = "anurag-groovy"
+    stages {
+        stage('clone') {
+            steps {
+                
+                
+            }
+        }
+        stage('clone') {
+            steps {
+            git branch: 'main', url: 'https://github.com/Anuragurmaliya/jenkins-cicd.git'    
+                
+            }
+        }
+        stage('init') {
+            steps {
+              sh 'terraform init'  
+            }
+        }
+        stage('plan') {
+            steps {
+              sh 'terraform plan'  
+            }
+        }
+        stage('apply') {
+            steps {
+                sh 'terraform apply -auto-approve'
+            }
+        }
     }
 }
+
