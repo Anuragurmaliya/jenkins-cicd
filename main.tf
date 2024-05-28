@@ -6,6 +6,6 @@ resource "aws_instance" "dev" {
     ami = "ami-0cc9838aa7ab1dce7"
     instance_type = "t2.nano"
     tags = {
-      Name = "edit-ec24"
+      Name = "anurag-groovy"
     }
 }
